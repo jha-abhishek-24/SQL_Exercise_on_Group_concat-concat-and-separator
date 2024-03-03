@@ -1,0 +1,23 @@
+T
+    GROUP_CONCAT(DISTINCT country ORDER BY country SEPARATOR ';') AS countries
+    FROM
+    diary;
+
+GROUP_CONCAT() concatenates distinct values from the country column into a single string.
+SEPARATOR ';' specifies that semicolons (;) should be used as separators between concatenated values.
+
+Output: For instance, if the distinct country names are 'Australia', 'Austria', 'France', 'Ireland', 'Japan', the output will be a single row containing the concatenated string 'Australia;Austria;France;Ireland;Japan'.
+
+Use cases:  to concat (with separators) 
+
+Note: GROUP_CONCAT while working Vertically (entries in a column, a1+a2+a3+.... ) and CONCAT while working horizontally (a1+b1+c1+...). 
+
+Q22:  Example of GROUP_CONCAT() and CONCAT()
+
+SELECT GROUP_CONCAT(
+        CONCAT(first_name, ' ', surname, ' #', player_number)
+        ORDER BY player_number
+        SEPARATOR '; '
+    ) AS players
+    FROM soccer_team;
+
